@@ -1,0 +1,19 @@
+version: "6.0"
+servers:
+  - id: rabbitmq
+    type: plugin
+    phases:
+      eod:
+        hook: plugin
+    transport: mx
+transportgroups:
+  - id: default
+    transports:
+      - id: mx
+scripting:
+  hooks:
+    eod:
+     - id: plugin
+       data: |
+        echo $arguments;
+        echo $transaction;

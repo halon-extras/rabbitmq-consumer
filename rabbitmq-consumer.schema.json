@@ -1,0 +1,90 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "rabbitmq-consumer schema",
+    "additionalProperties": false,
+    "properties": {
+        "queues": {
+            "type": "array",
+            "uniqueItems": true,
+            "description": "rabbitmq-consumer queues",
+            "items": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "queue"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Queue ID"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "Server hostname",
+                        "default": "localhost"
+                    },
+                    "port": {
+                        "type": "number",
+                        "description": "Server port",
+                        "default": 5672
+                    },
+                    "connect_timeout": {
+                        "type": "number",
+                        "description": "Connect timeout",
+                        "default": 10
+                    },
+                    "vhost": {
+                        "type": "string",
+                        "description": "The vhost",
+                        "default": "/"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username",
+                        "default": "guest"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password",
+                        "default": "guest"
+                    },
+                    "queue": {
+                        "type": "string",
+                        "description": "The queue"
+                    },
+                    "consumer_tag": {
+                        "type": "string",
+                        "description": "The consumer tag"
+                    },
+                    "ack": {
+                        "type": "boolean",
+                        "description": "Acknowledge all messages",
+                        "default": true
+                    },
+                    "tls": {
+                        "type": "boolean",
+                        "description": "Enable TLS",
+                        "default": false
+                    },
+                    "tls_verify_peer": {
+                        "type": "boolean",
+                        "description": "TLS verify peer",
+                        "default": false
+                    },
+                    "tls_verify_host": {
+                        "type": "boolean",
+                        "description": "TLS verify host",
+                        "default": true
+                    },
+                    "threads": {
+                        "type": "number",
+                        "description": "Number of threads",
+                        "default": 1
+                    }
+                }
+            }
+        }
+    }
+}

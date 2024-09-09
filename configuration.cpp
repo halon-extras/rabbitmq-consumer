@@ -1,5 +1,6 @@
 #include "configuration.hpp"
 #include <cstring>
+#include <stdexcept>
 
 bool ParseConfig(HalonConfig* cfg, std::list<std::shared_ptr<AMPQInjector>>& injectors)
 {

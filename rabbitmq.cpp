@@ -152,6 +152,16 @@ void InjectorWorker(std::shared_ptr<AMPQInjector> injector)
             icptr->cv = &cv;
 
             auto hic = HalonMTA_inject_new("rabbitmq");
+            if (!hic)
+            {
+                delete icptr;
+                icptr = nullptr;
+
+                amqp_destroy_connection(conn);
+                conn = nullptr;
+                break;
+            }
+
             HalonMTA_inject_callback_set(hic, InjectCallback, icptr);
             if (ParsePacket(hic, conn))
                 HalonMTA_inject_commit(hic);
